@@ -1,0 +1,61 @@
+
+
+    <div class="auth-body">
+        
+
+        <div class="auth-wraper">
+
+
+            <div class="auth-featured " style="position: relative;">
+                <a style="position: absolute; background: #ddd; padding: 5px; border-radius: 50%; height: 40px; width: 40px; text-align: center; color: black;" href="/login"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </a>
+                <img src="./images/01.jpg" alt="">
+            </div>
+            <div class="auth-form">
+                <h2>Write Email to Reset Password</h2>
+                
+                <% if (message) { %>
+                    <p
+
+                    <% if (bg) { %>
+                        
+                        style="padding: 5px; color: white; background-color: <%= bg %> ; "
+                        <% } else { %>
+                        style="padding: 5px; color: white; background-color: red ; "
+                    <% } %>
+                     
+                     ><%= message %> 
+
+                        <% if (resend) { %>
+                            <a href="/resend" style="color: white; background-color: rgb(12, 49, 255) ;text-decoration:underline; cursor: pointer;padding: 0 4px;">Resend!</a> Email?
+                        <% } %>
+
+                    </p>
+                   <% } %>
+
+                   
+
+                <div class="form-wraper">
+
+                    <form action="/forget-email-send" method="post">
+
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input <% if (forget_email) { %>  value = "<%= forget_email %> " <% } %> name="email" type="text">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Get Email</button>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="social-login">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-google"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,66 @@
+
+
+    <div class="profile-body">
+
+        <div class="profile-wraper">
+            <div class="profile-info">
+                
+                <%- include ('layouts/info') %> 
+
+                <hr>
+
+                <%- include ('layouts/menu') %> 
+
+            </div>
+            <div class="profile-box"> 
+                <div class="box-content">
+                   <h2 style="padding-left: 25px;">Change Photo</h2>
+                    <hr>
+                    <div class="form-wraper">
+                        <form action="/photo-update" method="post" enctype="multipart/form-data">
+                            
+                            <div style="padding-left: 25px;" class="form-group">
+                                <label style="padding-bottom: 10px;" for="">Select a Photo</label>
+
+                               
+
+                                <% if (message) { %>
+                                    <p 
+                                    <% if (bg) { %>
+                        
+                                        style="padding: 5px; margin-bottom: 5px; color: white; background-color: <%= bg %> ; "
+                                        <% } else { %>
+                                        style="padding: 5px; margin-bottom: 5px; color: white; background-color: red ; "
+                                    <% } %>
+                                    
+                                    ><%= message %> </p>
+                                   <% } %>
+                                
+                                <div style="padding-bottom: 15px;" class="profile-photo">
+                                    <% if (user.photo) { %>
+
+                                        <img class="profile_preview" src="/media/user_profile/<%= user.photo %> " alt="">
+
+                                        <a style="color: red; background-color: #ddd; padding: 3px; border-radius: 100%; display: inline-block; width: 30px; margin-bottom: 5px; text-align: center;" href="/delete-photo"><i class="fa fa-trash"></i></a>
+                                        
+                                    <% } else { %>
+                                        <img class="profile_preview" src="./images/avatar.png" alt="">
+                                    <% } %>
+                                </div>
+
+                                <label class="upload">
+                                    <i class="fa fa-photo uplaod"></i>
+                                    <input id="profile_photo" name="profile" style="display:none;" type="file">
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

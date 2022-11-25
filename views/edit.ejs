@@ -1,0 +1,74 @@
+
+
+    <div class="profile-body">
+
+    <div class="profile-wraper">
+        <div class="profile-info">
+            
+            <%- include ('layouts/info') %> 
+
+            <hr>
+            <%- include ('layouts/menu') %> 
+        </div>
+        <div class="profile-box"> 
+            <div class="box-content" style="padding: 34px 60px;">
+               <h2>Edit Profile Info</h2>
+
+               <% if (message) { %>
+                <p 
+                <% if (bg) { %>
+    
+                    style="padding: 5px; color: white; background-color: <%= bg %> ; "
+                    <% } else { %>
+                    style="padding: 5px; color: white; background-color: red ; "
+                <% } %>
+                
+                ><%= message %> </p>
+               <% } %>
+
+                <hr>
+                <div class="form-wraper">
+                    <form action="/profile-edit" method="post">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input name="name" <% if (user.name) { %> value = "<%= user.name %> " <% } %> type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input name="email" <% if (user.email) { %> value = "<%= user.email %> " <% } %> type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Username</label>
+                            <input name="username" <% if (user.username) { %> value = "<%= user.username %> " <% } %> type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phone</label>
+                            <input name="phone" <% if (user.phone) { %> value = "<%= user.phone %> " <% } %> type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Age</label>
+                            <input name="age" <% if (user.age) { %> value = "<%= user.age %> " <% } %> type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Gender</label>
+                            <select name="gender" id="" style="padding: 10px 10px; border-color: #e9e9e9; border-radius: 5px; font-size: 18px;">
+                                <option value="">--select--</option>
+                                <option <% if (user.gender == "Male") { %>
+                                 selected
+                                <% } %> value="Male">Male</option>
+                                <option <% if (user.gender == "Female") { %>
+                                    selected
+                                   <% } %>value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

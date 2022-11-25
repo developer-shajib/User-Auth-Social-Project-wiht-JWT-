@@ -1,0 +1,76 @@
+
+
+    <div class="profile-body">
+
+        <div class="profile-wraper">
+            <div class="profile-info">
+                
+                <%- include ('layouts/info') %> 
+
+                <hr>
+
+                <%- include ('layouts/menu') %> 
+
+            </div>
+            <div class="profile-box"> 
+                <div class="box-content" style="padding: 24px 26px;">
+                   <h2>Gallery Photo</h2>
+                    <hr>
+                    <div class="form-wraper">
+                        <form action="/gallery" method="post" enctype="multipart/form-data">
+                            
+                            <div class="form-group">
+                                <label style="margin-bottom: 5px;" for="">Select Gallery Photo</label>
+
+                               
+
+                                <% if (message) { %>
+                                    <p 
+                                    <% if (bg) { %>
+                        
+                                        style="padding: 5px; color: white; background-color: <%= bg %> ; "
+                                        <% } else { %>
+                                        style="padding: 5px; color: white; background-color: red ; "
+                                    <% } %>
+                                    
+                                    ><%= message %> </p>
+                                   <% } %>
+                                
+                                <div class="profile-photo gallery gallery_preview" style="display: flex; justify-content:space-around; flex-wrap:wrap ;">
+
+                                    <% if (user) { %>
+                                        <% user.gallery.forEach((item,index) => { %>
+                                           
+                                    <div class="gal_img_parant" style="display: flex; justify-content: space-evenly; width: 23%; flex-wrap: wrap;gap: 10px; height: 150px;">
+                                        <img style="width: 100%; height: 100%;" src="/media/gallery/<%= item %> " alt="">
+                                        <a style=" top: 7px; right: -10px;" href="/gallery/<%= index %> "><i class="fa fa-times" aria-hidden="true"></i></a>
+
+                                    </div>
+                           
+                                        <% }) %>
+                                        
+                                    <% } else { %>
+                                        <img class="" src="/images/image-gallery.jpg" alt="">
+                                    <% } %>
+
+                                </div>
+
+                                <hr>
+
+                                <label class="upload" style="margin-top: 5px;">
+                                    <i class="fa fa-photo uplaod"></i>
+                                    <input id="gallery_photo" name="gallery" multiple style="display:none;" type="file">
+                                    <p style="font-weight: 700;">Upload Gallery Photo</p>
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

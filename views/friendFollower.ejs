@@ -1,0 +1,56 @@
+ 
+    <div class="profile-body">
+
+        <div class="profile-wraper">
+            <div class="profile-info">
+
+                <%- include ('layouts/info') %> 
+
+                <hr>
+               
+                <%- include ('layouts/menu') %> 
+
+            </div>
+
+ 
+
+                <div class="profile-box"> 
+                    <div class="profle_banner">
+                        <div class="profile_img">
+                            <img class="cover_img" src="/images/backgroundImg.jpg" alt="">
+
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-photo">
+                                <% if (profile.photo) { %>
+                                    <img style="border-radius: 50%;" class="" src="/media/user_profile/<%= profile.photo %> " alt="">
+                                <% } else { %>
+                                    <img style="border-radius: 50%;" class="" src="./images/avatar.png" alt="">
+                                <% } %>
+                                <div class="profile_info" style="padding-left: 20px;">
+                                    <h2><%= profile.name %> </h2>
+                                    <span><%= profile.email %> </span>
+                                    <span class="follo"><a href="/my-followers"><%= user.follower.length %>  followers</a> . <a href="/my-following"> <%= user.following.length %>  following</span></a>
+                                </div>
+                            </div>
+                            <hr>  
+        
+                        </div>
+                    </div>
+
+                    <div class="gallery_show_profile" style="margin-top: 150px;">
+                        <p style="font-size: 20px; padding-left: 30px; color: rgb(140, 137, 137);">Followers</p>
+                        <hr style="margin-bottom: 20px;">
+
+
+
+              
+
+                    </div>
+             
+
+            </div>
+            
+        </div>
+
+    </div>

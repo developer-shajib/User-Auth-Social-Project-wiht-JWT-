@@ -1,0 +1,73 @@
+
+
+    <div class="profile-body">
+
+        <div class="profile-wraper">
+            <div class="profile-info">
+                
+                <%- include ('layouts/info') %> 
+
+                <hr>
+
+                <%- include ('layouts/menu') %> 
+
+            </div>
+            <div class="profile-box"> 
+                <div class="box-content" style="padding: 24px 26px;">
+                   <h2>Find Friends</h2>
+                    <hr>
+
+                    <% if (message) { %>
+                        <p 
+                        <% if (bg) { %>
+            
+                            style="padding: 5px; color: white; background-color: <%= bg %> ; "
+                            <% } else { %>
+                            style="padding: 5px; color: white; background-color: #dc4e41 ; "
+                        <% } %>
+                        
+                        ><%= message %> </p>
+                       <% } %>
+
+                    <div class="friends_main">
+              
+                        <% friends.forEach(data => { %>
+                              <div class="friends-item">
+                                <a class="friends-area" href="/<%= data._id %> ">
+                                    <% if (data.photo) { %>
+                                        <img src="media/user_profile/<%= data.photo %> " alt="">
+                                        <% } else { %>
+                                            <img src="/images/avatar.png " alt="">
+                                    <% } %>
+                                </a>
+                                <div class="friends-info">
+                                    <p><%= data.name %> </p>
+                                    <span><%= data.email %> </span>
+                                        
+                                    <% let follow = user.following.some(item => item == data._id) %> 
+
+                                    <% if (follow) { %>
+                                        <a class="unfollow_btn" href="/unfollow/<%= data._id %> ">Unfollow</a>
+                                        <% } else { %>
+                                        <a class="follow_btn" href="/follow/<%= data._id %> ">Follow</a>
+
+                                    <% } %>
+
+                       
+
+                                                
+                       
+                                </div>
+                            </div>
+                        <% }) %>
+
+                       
+                    
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>

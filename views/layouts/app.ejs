@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <%- body  %> 
+    
+
+
+    <script>
+
+        const profile_photo = document.getElementById('profile_photo');
+        if(profile_photo){
+
+            profile_photo.onchange = (e)=>{
+                
+                const profile_preview = document.querySelector('.profile_preview');
+
+                const url = URL.createObjectURL(e.target.files[0])
+
+                profile_preview.setAttribute('src',url)
+            }
+       
+        }
+
+        const gallery_photo = document.getElementById('gallery_photo');
+        let gallery_preview = document.querySelector('.gallery_preview');
+
+        if(gallery_photo){
+
+            gallery_photo.onchange = (e)=>{
+                
+
+
+                const files = e.target.files;
+                let image = '';
+
+                for(let i = 0; i < files.length; i++){
+
+                    const url = URL.createObjectURL(files[i]);
+
+                    image += `<div class="gal_img_parant " style="display: flex; justify-content: space-evenly; width: 23%; flex-wrap: wrap;gap: 10px;">
+                        <img style="max-width: 100%;" src="${url}" alt="">
+                    </div>`
+                 
+
+                }
+
+                gallery_preview.innerHTML = image;
+
+            }
+       
+        }
+
+      
+
+    </script>
+
+</body>
+</html>
+
+
+
